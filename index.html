@@ -177,12 +177,13 @@ select { background-image: linear-gradient(45deg, transparent 50%, var(--muted) 
 
       <div class="done" aria-live="polite">
         <div class="check">✓</div>
-        <h2>C'est noté <span id="who"></span>.</h2>
-        <p>Ton guide arrive sur WhatsApp. Pour l'avoir tout de suite, envoie-moi un message, je te le renvoie en réponse.</p>
+        <h2>Dernière étape <span id="who"></span>.</h2>
+        <p>Envoie-moi le message déjà écrit sur WhatsApp. Je t'envoie le guide en réponse.</p>
         <a class="btn wa" id="walink" href="#" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>
-          Recevoir le guide maintenant
+          Envoyer le message sur WhatsApp
         </a>
+        <p class="muted">Le message commence par <b>BIAIS</b>, c'est comme ça que je sais qu'il s'agit du guide. Envoie-le tel quel.</p>
         <p class="muted">Pendant que tu l'attends, ouvre ton journal de trading. Tu vas en avoir besoin à la page 9.</p>
       </div>
     </div>
@@ -215,14 +216,19 @@ select { background-image: linear-gradient(45deg, transparent 50%, var(--muted) 
 // ============ RÉGLAGES (les deux seules lignes à toucher) ============
 // Script Google « Opt-in break-even vers CRM » (compte nexusdigital) qui écrit le lead dans l'onglet Pipeline Lead magnet. Vide = test sans envoi.
 const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxD5w_6ysNXfNQGXjouaTTWgnWLDvazdcjNsjGlOpzwfmYiMBGyeYlfqrXGyg3Zttwdhg/exec";
-// Lien WhatsApp du bouton final (le même que dans les descriptions YouTube).
-const WHATSAPP_LINK = "https://wa.me/message/KPRFHLJUATUEB1";
+// Numéro WhatsApp de Vincent (sans +) et mot-clé qui ouvre le message pré-écrit.
+const WHATSAPP_NUMBER = "32492522769";
+const KEYWORD = "BIAIS";
 // =====================================================================
 
 const form = document.getElementById("optin");
 const err = document.getElementById("err");
 const go = document.getElementById("go");
-document.getElementById("walink").href = WHATSAPP_LINK;
+
+function lienWhatsApp(prenom) {
+  const texte = `${KEYWORD} · Salut Vincent, c'est ${prenom}. Je veux recevoir le guide Le piège du break-even.`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(texte)}`;
+}
 
 function normalise(indicatif, numero) {
   let n = numero.replace(/[^\d]/g, "");
@@ -265,6 +271,7 @@ form.addEventListener("submit", async (e) => {
     // Le prospect voit quand même la suite : le bouton WhatsApp récupère le contact de toute façon.
   }
   document.getElementById("who").textContent = prenom;
+  document.getElementById("walink").href = lienWhatsApp(prenom);
   document.getElementById("card").classList.add("sent");
   document.getElementById("card").scrollIntoView({ behavior: "smooth", block: "start" });
 });
