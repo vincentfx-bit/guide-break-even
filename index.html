@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Le piège du break-even · Guide gratuit</title>
+<meta name="description" content="Les 3 biais psychologiques qui ramènent ton compte à zéro, et le diagnostic qui chiffre ce qu'ils t'ont coûté. Guide gratuit envoyé sur WhatsApp.">
+<meta property="og:title" content="Le piège du break-even">
+<meta property="og:description" content="Pourquoi ton compte revient toujours à zéro. Guide gratuit, 22 études, diagnostic en 10 minutes.">
+<meta property="og:image" content="couverture.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,400&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Page d'opt-in WhatsApp du guide « Le piège du break-even ».
+   Trafic Instagram donc mobile d'abord : couverture, promesse, formulaire, sans menu ni lien de sortie. */
+:root {
+  --night: #15110c;
+  --night-2: #1f1912;
+  --line: #3a3024;
+  --text: #eee5d2;
+  --muted: #a79779;
+  --gold: #d3ab61;
+  --gold-hi: #e2bf7c;
+  --cream: #fbf3e2;
+  --loss: #d0705a;
+  --wa: #25d366;
+  --f-display: "Fraunces", Georgia, serif;
+  --f-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --f-data: "IBM Plex Mono", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--night);
+  color: var(--text);
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 28px max(16px, env(safe-area-inset-right)) 48px max(16px, env(safe-area-inset-left));
+}
+.top { display: flex; justify-content: space-between; gap: 12px; font-family: var(--f-data); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--line); padding-bottom: 14px; }
+.grid { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "hero" "card" "details"; gap: 32px; margin-top: 28px; }
+.hero { grid-area: hero; } .card { grid-area: card; } .details { grid-area: details; }
+@media (min-width: 860px) { .grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); grid-template-areas: "hero card" "details card"; column-gap: 56px; row-gap: 0; align-items: start; margin-top: 48px; } }
+
+.eyebrow { font-family: var(--f-data); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+h1 { font-family: var(--f-display); font-weight: 800; font-size: clamp(36px, 7.4vw, 60px); line-height: 1.02; letter-spacing: -.025em; color: var(--cream); margin: 12px 0 0; text-wrap: balance; }
+h1 em { font-weight: 400; color: var(--gold); }
+.lede { margin-top: 18px; font-size: clamp(17px, 2.4vw, 19px); color: var(--text); max-width: 34em; }
+
+.cover-wrap { position: relative; margin-top: 28px; display: flex; justify-content: center; }
+.cover { width: min(300px, 58%); aspect-ratio: 210 / 297; object-fit: cover; box-shadow: 0 30px 60px rgba(0,0,0,.6), 0 0 0 1px var(--line); transform: rotate(-2deg); }
+.cover.second { position: absolute; width: min(230px, 44%); right: 6%; bottom: -10px; transform: rotate(5deg); opacity: .95; }
+@media (min-width: 860px) { .cover-wrap { justify-content: flex-start; margin-top: 36px; } .cover.second { right: 8%; } }
+
+.list { list-style: none; padding: 0; margin: 28px 0 0; border-top: 1px solid var(--line); }
+.list li { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 15.5px; }
+.list li span { font-family: var(--f-display); font-weight: 800; color: var(--gold); font-size: 18px; line-height: 1.3; }
+.list b { color: var(--cream); font-weight: 600; }
+
+.proof { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 24px; }
+.proof div { border: 1px solid var(--line); padding: 12px 10px; text-align: center; }
+.proof b { display: block; font-family: var(--f-display); font-weight: 600; font-size: 24px; color: var(--gold); line-height: 1.1; }
+.proof small { font-family: var(--f-data); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+
+/* ---------- Formulaire ---------- */
+.card { background: var(--night-2); border: 1px solid var(--gold); padding: clamp(22px, 4vw, 34px); position: relative; }
+@media (min-width: 860px) { .card { position: sticky; top: 24px; } }
+.card h2 { font-family: var(--f-display); font-weight: 600; font-size: 26px; line-height: 1.15; color: var(--cream); margin: 8px 0 0; letter-spacing: -.015em; }
+.card .sub { color: var(--muted); font-size: 14.5px; margin-top: 8px; }
+form { display: grid; gap: 16px; margin-top: 22px; }
+label.f { display: grid; gap: 6px; font-size: 13px; font-weight: 600; color: var(--text); letter-spacing: .01em; }
+input[type=text], input[type=tel], select {
+  width: 100%; font: 16px var(--f-body); color: var(--cream);
+  background: var(--night); border: 1px solid var(--line); border-radius: 0;
+  padding: 14px 14px; outline: none; transition: border-color .15s;
+  -webkit-appearance: none; appearance: none;
+}
+input:focus, select:focus { border-color: var(--gold); }
+.phone { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 8px; }
+select { background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 30px; }
+.err { color: var(--loss); font-size: 13px; font-weight: 500; min-height: 0; }
+.consent { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; font-size: 12.5px; color: var(--muted); line-height: 1.45; cursor: pointer; }
+.consent input { appearance: none; -webkit-appearance: none; width: 20px; height: 20px; border: 1.5px solid var(--gold); margin: 1px 0 0; display: grid; place-content: center; cursor: pointer; background: transparent; }
+.consent input::after { content: ""; width: 10px; height: 10px; background: var(--gold); transform: scale(0); transition: transform .12s; }
+.consent input:checked::after { transform: scale(1); }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%;
+  font: 600 16.5px var(--f-body); color: var(--night); background: var(--gold);
+  border: 0; padding: 17px 20px; cursor: pointer; text-decoration: none; transition: background .15s, transform .1s;
+}
+.btn:hover { background: var(--gold-hi); }
+.btn:active { transform: translateY(1px); }
+.btn[disabled] { opacity: .6; cursor: wait; }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn.wa { background: var(--wa); color: #072e17; }
+.btn.wa:hover { background: #3be07a; }
+.safe { font-size: 12px; color: var(--muted); text-align: center; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+.done { display: none; }
+.card.sent form, .card.sent .intro { display: none; }
+.card.sent .done { display: grid; gap: 14px; }
+.done .check { width: 52px; height: 52px; border: 1.5px solid var(--gold); display: grid; place-content: center; color: var(--gold); font-family: var(--f-display); font-size: 26px; }
+.done h2 { margin: 0; }
+.done p { color: var(--text); font-size: 15.5px; }
+.done .muted { color: var(--muted); font-size: 13.5px; }
+
+.foot { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--line); display: grid; gap: 8px; font-size: 12px; color: var(--muted); }
+.foot .name { font-family: var(--f-display); font-weight: 800; font-size: 22px; letter-spacing: .02em; text-transform: uppercase; color: var(--cream); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><span>Guide gratuit</span><span>Psychologie du trader</span></div>
+
+  <div class="grid">
+    <div class="hero">
+      <div class="eyebrow">Pour les traders bloqués autour de zéro</div>
+      <h1>Pourquoi ton compte revient <em>toujours à zéro</em></h1>
+      <p class="lede">Les 3 biais psychologiques qui mangent ton edge, prouvés par 40 ans de recherche. Et le diagnostic de 10 minutes qui chiffre, en euros, ce qu'ils t'ont coûté sur tes 20 derniers trades.</p>
+
+      <div class="cover-wrap" aria-hidden="true">
+        <img class="cover" src="couverture.jpg" alt="">
+        <img class="cover second" src="apercu-diagnostic.jpg" alt="">
+      </div>
+    </div>
+
+    <div class="card" id="card">
+      <div class="intro">
+        <div class="eyebrow">Reçois le guide</div>
+        <h2>Où je t'envoie ton exemplaire ?</h2>
+        <p class="sub">Le guide part en PDF directement sur ton WhatsApp. C'est plus simple qu'un mail et il ne finit pas dans tes spams.</p>
+      </div>
+
+      <form id="optin" novalidate>
+        <label class="f">Ton prénom
+          <input type="text" name="prenom" id="prenom" autocomplete="given-name" required maxlength="40">
+        </label>
+        <label class="f">Ton numéro WhatsApp
+          <div class="phone">
+            <select name="indicatif" id="indicatif" aria-label="Indicatif pays">
+              <option value="+33" selected>🇫🇷 +33</option>
+              <option value="+32">🇧🇪 +32</option>
+              <option value="+41">🇨🇭 +41</option>
+              <option value="+352">🇱🇺 +352</option>
+              <option value="+1">🇨🇦 +1</option>
+              <option value="+212">🇲🇦 +212</option>
+              <option value="+213">🇩🇿 +213</option>
+              <option value="+216">🇹🇳 +216</option>
+              <option value="+221">🇸🇳 +221</option>
+              <option value="+225">🇨🇮 +225</option>
+              <option value="+262">🇷🇪 +262</option>
+              <option value="+590">🇬🇵 +590</option>
+              <option value="+596">🇲🇶 +596</option>
+            </select>
+            <input type="tel" name="numero" id="numero" inputmode="tel" autocomplete="tel-national" placeholder="6 12 34 56 78" required>
+          </div>
+        </label>
+        <div class="hp" aria-hidden="true"><label>Site web <input type="text" name="site" id="site" tabindex="-1" autocomplete="off"></label></div>
+        <label class="consent">
+          <input type="checkbox" id="consent" required>
+          <span>J'accepte de recevoir le guide et des messages de Vincent sur WhatsApp. Je peux arrêter à tout moment en répondant STOP.</span>
+        </label>
+        <div class="err" id="err" role="alert"></div>
+        <button class="btn" type="submit" id="go">Recevoir le guide sur WhatsApp</button>
+        <p class="safe">Ton numéro sert uniquement à t'envoyer le guide et à échanger avec toi. Il n'est jamais vendu ni partagé.</p>
+      </form>
+
+      <div class="done" aria-live="polite">
+        <div class="check">✓</div>
+        <h2>C'est noté <span id="who"></span>.</h2>
+        <p>Ton guide arrive sur WhatsApp. Pour l'avoir tout de suite, envoie-moi un message, je te le renvoie en réponse.</p>
+        <a class="btn wa" id="walink" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>
+          Recevoir le guide maintenant
+        </a>
+        <p class="muted">Pendant que tu l'attends, ouvre ton journal de trading. Tu vas en avoir besoin à la page 9.</p>
+      </div>
+    </div>
+
+    <div class="details">
+      <ul class="list">
+        <li><span>1</span><div>Le calcul qui montre comment une stratégie à <b>+35R devient un break-even parfait</b> avec une seule fuite, sans une seule mauvaise entrée.</div></li>
+        <li><span>2</span><div>Les <b>3 biais qui ramènent ton compte à zéro</b>, avec les études qui les prouvent chez les débutants comme chez les pros.</div></li>
+        <li><span>3</span><div>Le <b>diagnostic de 10 minutes</b> à remplir avec ton propre historique. Tu sauras quel biais te coûte le plus.</div></li>
+        <li><span>4</span><div>Le <b>protocole de 6 règles</b> à imprimer et à coller sous ton écran.</div></li>
+      </ul>
+
+      <div class="proof">
+        <div><b>22</b><small>études citées</small></div>
+        <div><b>12</b><small>pages</small></div>
+        <div><b>10 min</b><small>de diagnostic</small></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="foot">
+    <div class="name">Vincent Lejeune</div>
+    <span>Trading mathématique · Raiseone · Instagram @vincent_llj</span>
+    <span>Contenu éducatif, pas un conseil en investissement. Le trading sur marge comporte un risque élevé de perte en capital.</span>
+  </div>
+</div>
+
+<script>
+// ============ RÉGLAGES (les deux seules lignes à toucher) ============
+// Webhook Zapier « Catch Hook » qui écrit le lead dans le CRM. Laisse vide pour tester sans envoi.
+const WEBHOOK_URL = "";
+// Lien WhatsApp du bouton final (le même que dans les descriptions YouTube).
+const WHATSAPP_LINK = "https://wa.me/message/KPRFHLJUATUEB1";
+// =====================================================================
+
+const form = document.getElementById("optin");
+const err = document.getElementById("err");
+const go = document.getElementById("go");
+document.getElementById("walink").href = WHATSAPP_LINK;
+
+function normalise(indicatif, numero) {
+  let n = numero.replace(/[^\d]/g, "");
+  if (n.startsWith("00")) return "+" + n.slice(2);
+  if (n.startsWith(indicatif.slice(1)) && n.length > 10) return "+" + n;
+  if (n.startsWith("0")) n = n.slice(1);
+  return indicatif + n;
+}
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  err.textContent = "";
+  const prenom = document.getElementById("prenom").value.trim();
+  const numero = document.getElementById("numero").value.trim();
+  const indicatif = document.getElementById("indicatif").value;
+  const telephone = normalise(indicatif, numero);
+  const chiffres = telephone.replace(/\D/g, "").length;
+
+  if (document.getElementById("site").value) return; // robot
+  if (!prenom) { err.textContent = "Il me manque ton prénom."; return; }
+  if (chiffres < 9 || chiffres > 15) { err.textContent = "Ce numéro ne ressemble pas à un numéro WhatsApp. Vérifie-le."; return; }
+  if (!document.getElementById("consent").checked) { err.textContent = "Coche la case pour que je puisse t'envoyer le guide sur WhatsApp."; return; }
+
+  go.disabled = true;
+  go.textContent = "Envoi…";
+  const lead = {
+    prenom,
+    telephone,
+    source: "Lead magnet break-even",
+    date: new Date().toISOString(),
+    page: location.href,
+  };
+  try {
+    if (WEBHOOK_URL) {
+      await fetch(WEBHOOK_URL, { method: "POST", mode: "no-cors", body: new URLSearchParams(lead) });
+    } else {
+      console.warn("WEBHOOK_URL vide, lead non envoyé :", lead);
+    }
+  } catch (_) {
+    // Le prospect voit quand même la suite : le bouton WhatsApp récupère le contact de toute façon.
+  }
+  document.getElementById("who").textContent = prenom;
+  document.getElementById("card").classList.add("sent");
+  document.getElementById("card").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+</script>
+</body>
+</html>
